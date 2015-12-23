@@ -530,7 +530,7 @@ int buzznotediff(int n1,int n2);
 inline float abbs(float in);
 void midi2text(int in,char* t);
 void midi2text2(int in,char* t);
-int text2midi(char* in);
+//int text2midi(char* in);
 
 inline float get24(byte *psam,int pos);
 float nearst16(short *psam, int len, float pos, bool stereo, float *right);
@@ -1340,7 +1340,7 @@ INT_PTR APIENTRY PoolDialog(HWND hDlg,UINT uMsg,WPARAM wParam,LPARAM lParam)
 				if(hSamps)
 				{
 					int *seld=new int[200];
-					int seln=SendMessage(hSamps,LB_GETSELITEMS,200,(long)seld);
+					int seln=SendMessage(hSamps,LB_GETSELITEMS,200,(LPARAM)seld);
 					
 					for(int c=0;c<seln;c++)
 					{
@@ -1362,7 +1362,7 @@ INT_PTR APIENTRY PoolDialog(HWND hDlg,UINT uMsg,WPARAM wParam,LPARAM lParam)
 				if(hPool)
 				{
 					int *seld=new int[200];
-					int seln=SendMessage(hPool,LB_GETSELITEMS,200,(long)seld);
+					int seln=SendMessage(hPool,LB_GETSELITEMS,200,(LPARAM)seld);
 					for(int b=0;b<seln;b++)
 					{
 						//SendMessage(hPool,LB_DELETESTRING,seld[b],0);
@@ -6351,7 +6351,7 @@ void midi2text2(int in,char* t)
 // ==========================================================================================
 
 // ==========================================================================================
-
+/*
 int text2midi(char* in)
 {
 	if(strlen(in)<3)return -1;
@@ -6379,7 +6379,7 @@ int text2midi(char* in)
 
 	return nt+12*oct;
 }
-
+*/
 // ==========================================================================================
 
 // ==========================================================================================
@@ -6586,8 +6586,9 @@ float mi::note2freq(int note,int srate)
 
 inline float abbs(float in)
 {
-	int temp=(*(int *)(&in)&0x7FFFFFFF);
-	return *(float *)&temp;
+	//int temp=(*(int *)(&in)&0x7FFFFFFF);
+	//return *(float *)&temp;
+	return fabs(in);
 }
 
 // ==========================================================================================

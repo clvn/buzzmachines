@@ -1,14 +1,14 @@
 !INCLUDE ..\..\common.nmake
 
-all: "$(OUTDIR)\FSM KickXP.dll"
+all: "$(OUTDIR)\FSM Kick XP.dll"
 
 clean:
 	if exist $(OUTDIR) del $(OUTDIR)\*.* /q
 
 install:
 	if not exist $(INSTALLDIR_GEN) mkdir $(INSTALLDIR_GEN)
-	copy "$(OUTDIR)\FSM KickXP.dll" $(INSTALLDIR_GEN) /y
+	copy "$(OUTDIR)\FSM Kick XP.dll" $(INSTALLDIR_GEN) /y
 
-"$(OUTDIR)\FSM KickXP.dll": $(OUTDIR)\KickXP.obj
+"$(OUTDIR)\FSM Kick XP.dll": $(OUTDIR)\KickXP.obj
 	if not exist $(OUTDIR) mkdir $(OUTDIR)
 	cl $(LINKFLAGS) /Fe$@ $**

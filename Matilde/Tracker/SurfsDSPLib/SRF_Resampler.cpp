@@ -4,8 +4,13 @@
 
 using namespace SurfDSPLib;
 
-#define	POINTERADD(p,n,mu)		(u_long(p)+((n)*(mu)))
-#define	POINTERSUB(p1,p2,mu)	((u_long(p1)-u_long(p2))/(mu))
+static inline void* POINTERADD(void* p, int n, int mu) {
+	return (void*)((uintptr_t)p + n * mu);
+}
+
+static inline ptrdiff_t POINTERSUB(void* p1, void* p2, int mu){
+	return (((uintptr_t)p1 - (uintptr_t)p2) / mu);
+}
 
 static	u_char	gSampleSizes[16]=
 {
